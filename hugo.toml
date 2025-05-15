@@ -1,0 +1,20 @@
+baseURL = 'https://koromaki88-blog.pages.dev/'
+languageCode = 'en-us'
+title = "koromaki88's Blog"
+theme = 'PaperMod'
+
+[params]
+env = 'production'
+defaultTheme = 'auto'
+
+[menu]
+[[menu.main]]
+identifier = 'posts'
+name = 'Posts'
+url = '/posts/'
+weight = 10
+[[menu.main]]
+identifier = 'about'
+name = 'About'
+url = '/about/'
+weight = 20
