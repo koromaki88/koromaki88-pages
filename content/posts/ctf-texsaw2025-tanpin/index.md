@@ -60,7 +60,7 @@ The **third part** of the flag was much easier - just find a frame where the twi
 Remember the [Google sheet](https://docs.google.com/spreadsheets/d/1p58XfZqNvvuzFX9XelQlE3fcvYq9dwLglwJz9MKwxq8/edit?gid=253941028#gid=253941028)? Upon inspection, I noticed the first column has the header "BPM" and corresponding 3-digit numbers. This refers to "beats per minute", which simply put is a measurement for tempo in music. I intuitively understand that this sheet may be documenting details about the collaboration video. By translating the other three headers: `メドレー`, `曲名`, `担当者` corresponds to "Medley", "Song Name" and "Person in Charge". \
 ![tanpin-10](tanpin-10.png)\
 This means the **fourth part** of the flag could be found by taking the Japanese title of the song `アイスドロップ` and search for it by pressing Ctrl+F. This reveals `ねそ` to be the author of the part shown in the image (not to be confused with the artist behind "Ice Drop"). Looking this name up on YouTube revealed their username to be `ねそ-l9b`.\
-![tanpin-7](tanpin-7.png)
+![tanpin-7](tanpin-7.png#center)
 
 Putting everything together, we get the flag `texsaw{pxyONEf8ZGE,ice drop,aya komichi,ねそ-l9b}`.
 
