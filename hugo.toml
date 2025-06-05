@@ -8,6 +8,33 @@ customCSS = ['/justify.css', '/gruvbox.css']
 env = 'production'
 defaultTheme = 'auto'
 ShowReadingTime = true
+[params.profileMode]
+enabled = true
+subtitle = "IT/SE student - Technology enthusiast"
+imageUrl = "https://avatars.githubusercontent.com/u/86962625"
+imageWidth = 250
+imageHeight = 250
+[[params.profileMode.buttons]]
+name = "Posts"
+url = "/posts"
+[[params.profileMode.buttons]]
+name = "CTF Writeups"
+url = "/tags/ctf/"
+[[params.socialIcons]]
+name = "GitHub"
+url = "https://github.com/koromaki88"
+[[params.socialIcons]]
+name = "YouTube"
+url = "https://www.youtube.com/@koromaki88"
+[[params.socialIcons]]
+name = "Twitter"
+url = "https://twitter.com/realkoromaki88"
+[[params.socialIcons]]
+name = "LinkedIn"
+url = "https://www.linkedin.com/in/nhiennguyen88/"
+[[params.socialIcons]]
+name = "Facebook"
+url = "https://www.facebook.com/koromaki88/"
 
 [menu]
 [[menu.main]]
