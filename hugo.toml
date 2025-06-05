@@ -8,6 +8,7 @@ customCSS = ['/justify.css', '/gruvbox.css']
 env = 'production'
 defaultTheme = 'auto'
 ShowReadingTime = true
+ShowToc = true
 [params.profileMode]
 enabled = true
 subtitle = "IT/SE student - Technology enthusiast"
