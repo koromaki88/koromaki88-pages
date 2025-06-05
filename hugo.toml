@@ -2,11 +2,12 @@ baseURL = 'https://koromaki88-blog.pages.dev/'
 languageCode = 'en-us'
 title = "koromaki88's Blog"
 theme = 'PaperMod'
-customCSS = ['/justify.css']
+customCSS = ['/justify.css', '/gruvbox.css']
 
 [params]
 env = 'production'
 defaultTheme = 'auto'
+ShowReadingTime = true
 
 [menu]
 [[menu.main]]
