@@ -1,13 +1,13 @@
 # koromaki88's Personal Professional Blog
-[Check it out!](https://koromaki88-blog.pages.dev/) Website for documenting my personal thoughts, learning, write-ups related to software, CTFs and IT in general. Think of it as a digital journal.
+[Check it out!](https://koromaki88.pages.dev/) Website for documenting my personal thoughts, learning, write-ups related to software, CTFs and IT in general. Think of it as a digital journal.
 
 ## Development
 Clone repository with PaperMod submodule
 ```sh
 # https
-git clone --recursive https://github.com/koromaki88/koromaki88-blog.git koromaki88-blog
+git clone --recursive https://github.com/koromaki88/koromaki88-pages.git koromaki88-pages
 # ssh
-git clone --recursive git@github.com:koromaki88/koromaki88-blog.git koromaki88-blog
+git clone --recursive git@github.com:koromaki88/koromaki88-pages.git koromaki88-pages
 ```
 Run server locally (add `-D` to include drafts):
 ```sh
