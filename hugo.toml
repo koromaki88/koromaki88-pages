@@ -1,6 +1,6 @@
-baseURL = 'https://koromaki88-blog.pages.dev/'
+baseURL = 'https://koromaki88.pages.dev/'
 languageCode = 'en-us'
-title = "koromaki88's Blog"
+title = "koromaki88"
 theme = 'PaperMod'
 customCSS = ['/justify.css', '/gruvbox.css']
 
