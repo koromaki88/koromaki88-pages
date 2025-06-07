@@ -2,8 +2,8 @@
 title: "QEMU Setup Guide for (Arch) Linux"
 date: 2025-06-05T09:25:00+07:00
 draft: false
-tags: ["Guide", "Linux", "Virtualization", "QEMU"]
-categories: ["Guide", "Linux"]
+tags: [Linux", "Virtualization", "QEMU"]
+categories: ["Guides"]
 summary: "My clumsy QEMU setup guide based on how I personally tackled it."
 ---
 I have been using VirtualBox for the longest time when it comes to virtual machines, and never really felt like I needed anything more functionally. The only minor "issue" that I really noticed was the performance (boot time, latency, etc.) that I quickly dismissed once I got used to it. This is where QEMU comes into the picture, as it has existed as an alternative that offers superior performances, but at the cost of a more complicated setup process. For that reason, I had regrettably put it on the back burner for a while, until I finally gave it a try and was very surprised at how pleasant the installation process was. This guide was made mostly as a self-reminder, but also for anyone who are interested in trying QEMU & Virt-manager and are looking for a reasonably simple guide to get started.

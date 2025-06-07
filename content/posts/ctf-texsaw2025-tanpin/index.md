@@ -2,8 +2,8 @@
 title: "TexSAW 2025 | OSINT - tanpin"
 date: 2025-04-16T17:20:00+07:00
 draft: false
-tags: ["CTF", "Writeup", "Medium"]
-categories: ["CTFs"]
+tags: ["OSINT", "TexSAW"]
+categories: ["CTF Writeups"]
 summary: "My full guide & interpretation of 'tanpin' OSINT challenge on TexSAW 2025."
 ---
 **Category**: OSINT\

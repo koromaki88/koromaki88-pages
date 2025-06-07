@@ -2,7 +2,6 @@ baseURL = 'https://koromaki88.pages.dev/'
 languageCode = 'en-us'
 title = "koromaki88"
 theme = 'PaperMod'
-customCSS = ['/justify.css', '/gruvbox.css']
 
 [params]
 env = 'production'
@@ -24,7 +23,7 @@ name = "Posts"
 url = "/posts"
 [[params.profileMode.buttons]]
 name = "CTF Writeups"
-url = "/categories/ctfs/"
+url = "/categories/ctf-writeups/"
 
 [[params.socialIcons]]
 name = "GitHub"
