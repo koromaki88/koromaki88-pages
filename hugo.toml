@@ -10,6 +10,7 @@ defaultTheme = 'auto'
 ShowReadingTime = true
 ShowToc = true
 ShowPostNavLinks = true
+ShowCodeCopyButtons = true
 
 [params.profileMode]
 enabled = true
@@ -50,6 +51,11 @@ url = "https://www.facebook.com/koromaki88/"
   minMatchCharLength = 0
   # limit = 100
   keys = ["title"]
+
+[params.editPost]
+  URL = "https://github.com/koromaki88/koromaki88-pages/blob/main/content"
+  Text = "Suggest Changes"
+  appendFilePath = true
 
 [outputs]
 home = ['HTML', 'RSS', 'JSON']
