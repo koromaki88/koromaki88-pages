@@ -5,7 +5,8 @@ theme = 'PaperMod'
 
 [params]
 env = 'production'
-defaultTheme = 'auto'
+defaultTheme = 'dark'
+disableThemeToggle = true
 ShowReadingTime = true
 ShowToc = true
 ShowPostNavLinks = true

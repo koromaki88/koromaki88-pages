@@ -6,16 +6,6 @@
     --header-height: 60px;
     --footer-height: 60px;
     --radius: 8px;
-    --theme: #f9f5d7;
-    --entry: #fbf1c7;
-    --content: #3c3836;
-    --hljs-bg: #fbf1c7;
-    --primary: #b57614;
-    --secondary: #3c3836;
-    --tertiary: #ebdbb2;
-    --code-bg: #ebdbb2;
-    --code-block-bg: #ebdbb2;
-    --border: #d5c4a1;
 }
 
 .dark {
