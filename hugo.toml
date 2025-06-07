@@ -24,7 +24,7 @@ name = "Posts"
 url = "/posts"
 [[params.profileMode.buttons]]
 name = "CTF Writeups"
-url = "/tags/ctf/"
+url = "/categories/ctfs/"
 
 [[params.socialIcons]]
 name = "GitHub"
@@ -72,7 +72,17 @@ name = 'Posts'
 url = '/posts/'
 weight = 20
 [[menu.main]]
+identifier = 'categories'
+name = 'Categories'
+url = '/categories/'
+weight = 30
+[[menu.main]]
+identifier = 'tags'
+name = 'Tags'
+url = '/tags/'
+weight = 40
+[[menu.main]]
 identifier = 'about'
 name = 'About'
 url = '/about/'
-weight = 30
+weight = 50
