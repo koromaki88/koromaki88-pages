@@ -9,6 +9,7 @@ env = 'production'
 defaultTheme = 'auto'
 ShowReadingTime = true
 ShowToc = true
+ShowPostNavLinks = true
 
 [params.profileMode]
 enabled = true

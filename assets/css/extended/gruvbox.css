@@ -6,14 +6,16 @@
     --header-height: 60px;
     --footer-height: 60px;
     --radius: 8px;
-    --theme: #fdf9e6;
-    --entry: #f9f5d7;
-    --primary: #1d1d1d;
+    --theme: #f9f5d7;
+    --entry: #fbf1c7;
+    --content: #3c3836;
+    --hljs-bg: #fbf1c7;
+    --primary: #b57614;
     --secondary: #3c3836;
-    --tertiary: #f9f5d7;
-    --content: #050505;
-    --hljs-bg: #fffce5;
-    --code-bg: #fffce5;
+    --tertiary: #ebdbb2;
+    --code-bg: #ebdbb2;
+    --code-block-bg: #ebdbb2;
+    --border: #d5c4a1;
 }
 
 .dark {
@@ -25,4 +27,6 @@
     --secondary: #ebdbb2;
     --tertiary: #3c3836;
     --code-bg: #3c3836;
+    --code-block-bg: #3c3836;
+    --border: #504945;
 }
