@@ -1,3 +1,6 @@
+.post-content ul,
+.post-content ol,
+.post-content li,
 .post-content p {
     text-align: justify;
 }
