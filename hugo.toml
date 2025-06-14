@@ -64,27 +64,27 @@ home = ['HTML', 'RSS', 'JSON']
 [[menu.main]]
 identifier = 'search'
 name = 'Search'
-url = '/search/'
+pageRef = '/search/'
 weight = 10
 [[menu.main]]
 identifier = 'posts'
 name = 'Posts'
-url = '/posts/'
+pageRef = '/posts/'
 weight = 20
 [[menu.main]]
 identifier = 'categories'
 name = 'Categories'
-url = '/categories/'
+pageRef = '/categories/'
 weight = 30
 [[menu.main]]
 identifier = 'tags'
 name = 'Tags'
-url = '/tags/'
+pageRef = '/tags/'
 weight = 40
 [[menu.main]]
 identifier = 'about'
 name = 'About'
-url = '/about/'
+pageRef = '/about/'
 weight = 50
 
 [caches]
