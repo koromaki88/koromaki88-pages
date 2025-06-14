@@ -21,10 +21,10 @@ imageHeight = 250
 
 [[params.profileMode.buttons]]
 name = "Posts"
-url = "/posts"
+pageRef = "/posts"
 [[params.profileMode.buttons]]
 name = "CTF Writeups"
-url = "/categories/ctf-writeups/"
+pageRef = "/categories/ctf-writeups/"
 
 [[params.socialIcons]]
 name = "GitHub"
