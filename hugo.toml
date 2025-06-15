@@ -46,7 +46,7 @@ url = "https://www.facebook.com/koromaki88/"
   keys = ["title"]
 
 [params.editPost]
-  URL = "https://github.com/koromaki88/koromaki88-pages/blob/main/content"
+  URL = "https://github.com/koromaki88/blog/blob/main/content"
   Text = "Suggest Changes"
   appendFilePath = true
 
