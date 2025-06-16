@@ -2,7 +2,7 @@
 title: "QEMU Setup Guide for (Arch) Linux"
 date: 2025-06-05T09:25:00+07:00
 draft: false
-tags: ["Linux", "Virtualization", "QEMU"]
+tags: ["Arch", "Linux", "Virtualization", "QEMU"]
 categories: ["Guides"]
 summary: "My clumsy QEMU setup guide based on how I personally tackled it."
 ---
