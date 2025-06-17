@@ -13,18 +13,18 @@ I picked Miniconda over Anaconda Distribution, because I want a minimal base env
 
 On Arch, Miniconda can be installed either through the [AUR](https://aur.archlinux.org/packages/miniconda3) or [official installation script](https://anaconda.com/docs/getting-started/miniconda/install#linux-terminal-installer). They're effectively the same where the AUR package installs Miniconda at root's `/opt/` by default and can be changed by just modifying the PKGBUILD by yourself. With multiple environments, Miniconda can take quite plenty of disk space in my root partition, so I use the official script and install Miniconda in home instead.
 
-- Download the installation script
+Download the installation script
 ```sh
 # This link should be different / can be changed for ARM based systems
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh 
+$ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh 
 ```
 
-- Verify its integrity by comparing the hash value to [here](https://repo.anaconda.com/miniconda/)
+Verify its integrity by comparing the hash value to [here](https://repo.anaconda.com/miniconda/)
 ```sh
-sha256sum ~/Downloads/Miniconda3-latest-Linux-x86_64.sh
+$ sha256sum ~/Downloads/Miniconda3-latest-Linux-x86_64.sh
 ```
 
-- Follow the installation process until this point. Ensure that "no" is picked - we don't want to activate conda on every new shell.
+Follow the installation process until this point. Ensure that "no" is picked - we don't want to activate conda on every new shell.
 ```
 Do you wish to update your shell profile to automatically initialize conda?
 This will activate conda on startup and change the command prompt when activated.
@@ -44,13 +44,28 @@ source miniconda3/bin/activate <env> # optionally specify an environment name
 
 The default environment is labeled `base`, which I use as a template and not install anything extra on it. The commands creat a new environment with some packages (change/add whatever you like) and switch to that environment:
 ```sh
-conda create -n myenv python numpy jupyter pandas
-conda activate myenv
+$ conda create -n myenv python numpy jupyter pandas
+$ conda activate myenv
 ```
 
 # Jupyter Notebook & VSCode
-This section was where I had a bit of trouble due to Arch's open source VSCode quirks that I don't fully understand. This will be updated if the issue is fixed or if I found a proper fix.
+This section was where I had a bit of trouble due to Arch's open source VSCode quirks that I still don't fully understand. This will be updated if the issue is fixed or if I found a better workaround.
 
+Install the [Jupyter](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter) and [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) extensions on VSCode. It should automatically add all the following extensions:
+![ml-setup-1](ml-setup-1.png#center)
+
+Close VSCode & run it from the terminal with the command below. You can add it as an alias for convenience. Without doing this, the "Select Kernel" menu would infinitely buffer.
 ```sh
-code --enable-proposed-api ms-toolsai.jupyter
+$ code --enable-proposed-api ms-toolsai.jupyter
+```
+
+Create a new `.ipynb` file and you should be able to select the desired Python environment (mine is called 'ml').
+![ml-setup-2](ml-setup-2.png#center)
+![ml-setup-3](ml-setup-3.png#center)
+
+# Additional Configurations
+To add [conda-forge](https://conda-forge.org/) as a channel:
+```sh
+$ conda config --add channels conda-forge
+$ conda config --set channel_priority strict
 ```
