@@ -54,7 +54,7 @@ This section was where I had a bit of trouble due to Arch's open source VSCode q
 Install the [Jupyter](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter) and [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) extensions on VSCode. It should automatically add all the following extensions:
 ![ml-setup-1](ml-setup-1.png#center)
 
-Close VSCode & run it from the terminal with the command below. You can add it as an alias for convenience. Without doing this, the "Select Kernel" menu would infinitely buffer.
+Close VSCode & run it from the terminal with the command below. Without doing this, the "Select Kernel" menu would infinitely buffer. From personal testing, you only need to run this once and `code` should just work normally next time.
 ```sh
 $ code --enable-proposed-api ms-toolsai.jupyter
 ```
