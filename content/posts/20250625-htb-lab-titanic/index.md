@@ -1,7 +1,7 @@
 ---
 title: "HTB Lab | Linux - Titanic"
 date: 2025-06-25T23:15:00+07:00
-draft: true
+draft: false
 tags: ["Linux", "HTB", "HTB Machines", "Web", "Hashcat", "Local File Inclusion", "ImageMagick"]
 categories: ["CTF Writeups"]
 summary: "How I solved Hack The Box's vulnerable machine \"Titanic\"."
@@ -33,7 +33,7 @@ Exploring the website, we notice there is a form when clicking on "Book Your Tri
 
 Filling in garbage information and submit, a JSON file is downloaded. Viewing it shows the information that we just inputted. My initial suspicision was a vulnerability in the actual input fields, but this yields no result. 
 
-# Exploitation
+# Web Exploitation
 I turn to using Burp Suite to intercept the requests upon clicking 'Submit', revealing a `POST http://titanic.htb/book` and `GET http://titanic.htb/download?ticket=6a516344-0c5b-4936-a025-c364b30565e8.json`.
 
 ```
@@ -52,6 +52,10 @@ Connection: keep-alive
 Notice that the downloaded file is explicitly shown in the URL. Send this request over to Burp Suite's Repeater, and test for [Local File Inclusion](https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/07-Input_Validation_Testing/11.1-Testing_for_Local_File_Inclusion) by replacing the request as `/download?ticket=/etc/passwd`.
 
 ![htb-titanic-3.png](htb-titanic-3.png)
+
+As shown, this was successful in revealing the content of `/etc/passwd`. If you are aware or just through pure intuition that this file is for storing user accounts information, you can naively obtain the user flag by finding the user account `developer` and use LFI `/home/developer/user.txt` to output its content. However, in a real attack, it's likely certain we do not know the exact file name or directory of what we are searching for.
+
+# Gaining Access
 
 ```sh
 echo -n "2d149e5fbd1b20cf31db3e3c6a28fc9b" | xxd -r -p | base64
