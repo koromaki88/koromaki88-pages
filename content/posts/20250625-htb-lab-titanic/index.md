@@ -4,7 +4,7 @@ date: 2025-06-25T23:15:00+07:00
 draft: false
 tags: ["Linux", "HTB", "HTB Machines", "Web", "Hashcat", "Local File Inclusion", "ImageMagick"]
 categories: ["CTF Writeups"]
-summary: "How I solved Hack The Box's vulnerable machine \"Titanic\"."
+summary: "How I solved Hack The Box's vulnerable machine \"Titanic\" and comparison to the intended solutions."
 ---
 [![htb-titanic-1.png](htb-titanic-1.png#center)](https://app.hackthebox.com/machines/648)
 
