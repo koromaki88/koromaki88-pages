@@ -39,7 +39,7 @@ You can undo this by running `conda init --reverse $SHELL`? [yes|no]
 
 Miniconda is ready for use. I treat it similarly to Python's virtual environment by only activating the environment whenever I need to use it.
 ```sh
-source miniconda3/bin/activate <env> # optionally specify an environment name
+$ source miniconda3/bin/activate <env> # optionally specify an environment name
 ```
 
 The default environment is labeled `base`, which I use as a template and not install anything extra on it. The commands creat a new environment with some packages (change/add whatever you like) and switch to that environment:
